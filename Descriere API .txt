@@ -1,0 +1,95 @@
+1. CartController
+Endpoint-urile pentru gestionarea coșului de cumpărături:
+
+POST /cart/add
+Tip Request: POST
+Parametri necesari:
+userId (String) - ID-ul utilizatorului.
+prodId (String) - ID-ul produsului.
+prodQty (int) - Cantitatea produsului.
+Descriere: Adaugă un produs în coșul de cumpărături al utilizatorului specificat.
+GET /cart/{userId}/items
+Tip Request: GET
+Parametri necesari:
+Path variable userId (String) - ID-ul utilizatorului.
+Descriere: Returnează lista de produse din coșul de cumpărături al utilizatorului specificat.
+GET /cart/{userId}/count
+Tip Request: GET
+Parametri necesari:
+Path variable userId (String) - ID-ul utilizatorului.
+Descriere: Returnează numărul total de produse din coșul utilizatorului.
+DELETE /cart/remove
+Tip Request: DELETE
+Parametri necesari:
+userId (String) - ID-ul utilizatorului.
+prodId (String) - ID-ul produsului care trebuie șters.
+Descriere: Elimină un produs din coșul utilizatorului.
+
+2. UserController
+Endpoint-urile pentru gestionarea utilizatorilor:
+
+POST /users/register
+Tip Request: POST
+Parametri necesari:
+userName (String) - Numele utilizatorului.
+mobileNo (Long) - Numărul de telefon.
+emailId (String) - Email-ul utilizatorului.
+address (String) - Adresa utilizatorului.
+pinCode (int) - Codul poștal.
+password (String) - Parola utilizatorului.
+Descriere: Înregistrează un utilizator nou.
+GET /users/details
+Tip Request: GET
+Parametri necesari:
+Query parameters:
+emailId (String) - Email-ul utilizatorului.
+password (String) - Parola utilizatorului.
+Descriere: Returnează detalii despre utilizatorul cu email-ul și parola specificate.
+
+3. AccessoriesController
+Endpoint-urile pentru gestionarea produselor (înlocuit "book" cu "accessories"):
+GET /
+Tip Request: GET
+Parametri necesari: Niciun parametru.
+Descriere: Returnează pagina principală.
+GET /accessory_register
+Tip Request: GET
+Parametri necesari: Niciun parametru.
+Descriere: Returnează pagina pentru înregistrarea unui produs.
+GET /available_accessories
+Tip Request: GET
+Parametri necesari: Niciun parametru.
+Descriere: Returnează lista tuturor produselor disponibile.
+POST /save
+Tip Request: POST
+Parametri necesari:
+Obiect JSON de tip Accessories cu formatul:
+{
+    "id": 1,
+    "name": "Football Ball",
+    "type": "Sports",
+    "price": 100.0,
+    "quantity": 10
+}
+Descriere: Adaugă un produs nou în baza de date.
+GET /my_accessories
+Tip Request: GET
+Parametri necesari: Niciun parametru.
+Descriere: Returnează lista produselor salvate de utilizator.
+PUT /editAccessory/{id}
+Tip Request: PUT
+Parametri necesari:
+Path variable id (int) - ID-ul produsului care trebuie editat.
+Obiect JSON cu noile detalii ale produsului:
+{
+    "name": "Updated Name",
+    "type": "Updated Type",
+    "price": 120.0,
+    "quantity": 15
+}
+Descriere: Editează detaliile produsului cu ID-ul specificat.
+DELETE /deleteAccessory/{id}
+Tip Request: DELETE
+Parametri necesari:
+Path variable id (int) - ID-ul produsului care trebuie șters.
+Descriere: Șterge produsul cu ID-ul specificat din baza de date.
